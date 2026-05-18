@@ -72,3 +72,10 @@ input, select {
 
 .correct { border: 2px solid green; }
 .wrong { border: 2px solid red; }
+.correct-hint {
+  display: block;
+  margin-top: 4px;
+  color: #27ae60;
+  font-size: 13px;
+  font-weight: bold;
+}
