@@ -1,135 +1,31 @@
-body {
-  font-family: Arial;
-  direction: rtl;
-  background: linear-gradient(135deg, #f6fbfd, #eef7fb);
-  margin: 0;
-  padding: 20px;
-}
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>תוצאות בוחן הבניינים</title>
 
-.mainTitle {
-  text-align: center;
-  color: #2c3e50;
-}
+  <link rel="stylesheet" href="results.css">
+</head>
 
-/* container */
-.questionCont {
-  max-width: 900px;
-  margin: auto;
-  background: #fdfdfd;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.03);
-}
+<body>
 
-/* summary */
-.result-summary {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(15px);
-  transition: 0.5s;
-}
+<h1 class="mainTitle">תוצאות בוחן הבניינים</h1>
 
-.result-summary.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+<div class="questionCont">
 
-/* score circle */
-.scoreCircle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin: 20px auto;
-  background: linear-gradient(135deg, #2db7cc, #3498db);
-  color: white;
-  font-size: 38px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 20px rgba(52,152,219,0.2);
-}
+  <div id="summaryBox" class="result-summary">
+    <div class="scoreCircle" id="scoreCircle">0%</div>
+    <h3 id="summaryText"></h3>
+  </div>
 
-/* section title */
-.sectionTitle {
-  margin-top: 40px;
-  color: #2c3e50;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 10px;
-}
+  <h2 class="sectionTitle">פירוט תשובות</h2>
+  <button id="restartQuizBtn" class="restart-btn">
+  חידון חדש 🔄
+</button>
+  <div id="resultsContainer"></div>
 
-/* table */
-.results-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 12px;
-  margin-top: 20px;
-}
+</div>
 
-/* card row */
-.result-row {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: 0.5s;
-}
-
-.result-row.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.result-cell {
-  background: white;
-  padding: 18px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.result-row td:first-child {
-  border-radius: 0 15px 15px 0;
-}
-
-.result-row td:last-child {
-  border-radius: 15px 0 0 15px;
-}
-
-/* word */
-.word-cell {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-/* status */
-.status-badge {
-  padding: 6px 16px;
-  border-radius: 25px;
-  font-weight: bold;
-}
-
-.status-correct {
-  background: #d4edda;
-  color: #155724;
-}
-
-.status-wrong {
-  background: #f8d7da;
-  color: #721c24;
-}
-
-/* answer box */
-.answer-box {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.wrong-val {
-  color: #e74c3c;
-  text-decoration: line-through;
-}
-
-.correct-val {
-  color: #27ae60;
-  font-weight: bold;
-}
+<script src="results.js"></script>
+</body>
+</html>
