@@ -21,6 +21,12 @@ function shuffle(array) {
 // Load next question
 // -----------------------------
 function loadQuestion() {
+
+  document.getElementById("correctNum").innerText = "";
+  document.getElementById("correctPronoun").innerText = "";
+  document.getElementById("correctTime").innerText = "";
+  document.getElementById("correctRoot").innerText = "";
+  
   const q = quizPool[currentIndex];
 
   // reset styles
@@ -58,35 +64,50 @@ function checkAnswer() {
   const time = document.getElementById("binyanTime");
   const root = document.getElementById("root");
 
+  const correctNum = document.getElementById("correctNum");
+  const correctPronoun = document.getElementById("correctPronoun");
+  const correctTime = document.getElementById("correctTime");
+  const correctRoot = document.getElementById("correctRoot");
+
   let correct = true;
 
-  // number
+  // ------------------ RESET HINTS ------------------
+  correctNum.innerText = "";
+  correctPronoun.innerText = "";
+  correctTime.innerText = "";
+  correctRoot.innerText = "";
+
+  // ------------------ NUMBER ------------------
   if (Number(num.value) !== q.binyanNumber) {
     num.classList.add("wrong");
+    correctNum.innerText = `תשובה: ${q.binyanNumber}`;
     correct = false;
   } else {
     num.classList.add("correct");
   }
 
-  // pronoun
+  // ------------------ PRONOUN ------------------
   if (pronoun.value !== q.binyanPronoun) {
     pronoun.classList.add("wrong");
+    correctPronoun.innerText = `תשובה: ${q.binyanPronoun}`;
     correct = false;
   } else {
     pronoun.classList.add("correct");
   }
 
-  // time
+  // ------------------ TIME ------------------
   if (time.value !== q.binyanTime) {
     time.classList.add("wrong");
+    correctTime.innerText = `תשובה: ${q.binyanTime}`;
     correct = false;
   } else {
     time.classList.add("correct");
   }
 
-  // root
+  // ------------------ ROOT ------------------
   if (root.value !== q.binyanRoot) {
     root.classList.add("wrong");
+    correctRoot.innerText = `תשובה: ${q.binyanRoot}`;
     correct = false;
   } else {
     root.classList.add("correct");
@@ -102,7 +123,26 @@ function checkAnswer() {
 function next() {
   const btn = document.getElementById("btnNext");
 
-  // first click = check
+  const num = document.getElementById("binyanNum");
+  const pronoun = document.getElementById("binyanPronoun");
+  const time = document.getElementById("binyanTime");
+  const root = document.getElementById("root");
+
+  // -----------------------------
+  // בדיקת מילוי שדות
+  // -----------------------------
+  if (
+    num.value === "" ||
+    pronoun.value === "בחר" ||
+    time.value === "בחר" ||
+    root.value.trim() === ""
+  ) {
+    return;
+  }
+
+  // -----------------------------
+  // שלב 1: בדיקה
+  // -----------------------------
   if (btn.dataset.state !== "checked") {
     checkAnswer();
     btn.innerText = "המשך";
@@ -110,18 +150,20 @@ function next() {
     return;
   }
 
-  // second click = next question
+  // -----------------------------
+  // שלב 2: מעבר שאלה
+  // -----------------------------
   currentIndex++;
 
-if (currentIndex >= quizPool.length) {
-  localStorage.setItem("quizResults", JSON.stringify({
-    words: quizPool,
-    results: results
-  }));
+  if (currentIndex >= quizPool.length) {
+    localStorage.setItem("quizResults", JSON.stringify({
+      words: quizPool,
+      results: results
+    }));
 
-  window.location.href = "results.html";
-  return;
-}
+    window.location.href = "results.html";
+    return;
+  }
 
   btn.innerText = "בדוק תשובה";
   btn.dataset.state = "";
