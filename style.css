@@ -1,0 +1,74 @@
+body {
+  font-family: Arial;
+  direction: rtl;
+  background: linear-gradient(135deg, #e6f7fb, #f1fbfd);
+}
+
+.mainQuestionContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.questionContainer {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.binyanWord {
+  font-size: 32px;
+  text-align: center;
+  color: #0097b2;
+  font-weight: bold;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #b7e3ec;
+  width: 100%;
+}
+
+.quizButton {
+  background: #00b4d8;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.quizButton:hover {
+  background: #0097b2;
+}
+
+/* Progress */
+.progressTrack {
+  height: 12px;
+  background: #dff3f8;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00b4d8, #48cae4);
+  transition: width 0.4s ease;
+}
+
+.progressText {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.correct { border: 2px solid green; }
+.wrong { border: 2px solid red; }

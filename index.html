@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>בוחן בניינים</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+
+<body>
+
+<div class="mainQuestionContainer">
+  <div class="questionContainer">
+
+    <!-- Progress -->
+    <div class="progressWrapper">
+      <div class="progressTrack">
+        <div id="progressFill" class="progressFill"></div>
+      </div>
+      <div id="progressText" class="progressText"></div>
+    </div>
+
+    <!-- Word -->
+    <div id="arabW" class="binyanWord">---</div>
+
+    <!-- Inputs -->
+    <label>
+      בניין:
+      <input id="binyanNum" type="number"/>
+    </label>
+
+    <label>
+      גוף:
+      <select id="binyanPronoun">
+        <option disabled selected>בחר</option>
+        <option value="אני">מדבר</option>
+        <option value="אתה">נוכח</option>
+        <option value="את">נוכחת</option>
+        <option value="הוא">נסתר</option>
+        <option value="היא">נסתרת</option>
+        <option value="אנחנו">מדברים</option>
+        <option value="אתם">נוכחים</option>
+        <option value="אתן">נוכחות</option>
+        <option value="הם">נסתרים</option>
+        <option value="הן">נסתרות</option>
+        <option value="יחיד">יחיד</option>
+        <option value="יחידה">יחידה</option>
+        <option value="רבים">רבים</option>
+        <option value="רבות">רבות</option>
+        <option value="אין">אין</option>
+      </select>
+    </label>
+
+    <label>
+      זמן:
+      <select id="binyanTime">
+        <option disabled selected>בחר</option>
+        <option value="עבר">עבר</option>
+        <option value="עתיד/הווה">עתיד/הווה</option>
+        <option value="ציווי">ציווי</option>
+        <option value="ב. פועל">ב. פועל</option>
+        <option value="ב. פעול">ב. פעול</option>
+        <option value="מקור">מקור</option>
+      </select>
+    </label>
+
+    <label>
+      שורש:
+      <input id="root" type="text" placeholder="ע-ג'-ל"/>
+    </label>
+
+    <button id="btnNext" class="quizButton">בדוק תשובה</button>
+
+  </div>
+</div>
+
+<script src="words.js"></script>
+<script src="quiz.js"></script>
+
+</body>
+</html>
