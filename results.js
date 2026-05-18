@@ -121,3 +121,10 @@ function animateScore(start, end) {
     scoreCircle.classList.add("show");
   }, 150);
 }
+document.getElementById("restartQuizBtn").addEventListener("click", () => {
+  // מוחק את התוצאות הישנות
+  localStorage.removeItem("quizResults");
+
+  // מעביר לחידון חדש
+  window.location.href = "index.html";
+});
