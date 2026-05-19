@@ -40,7 +40,7 @@ function loadQuestion() {
   inputs.forEach(el => {
     el.classList.remove("correct", "wrong");
   });
-
+  document.querySelectorAll(".correct-answer").forEach(el => el.remove());
   // reset values
   document.getElementById("binyanNum").value = "";
   document.getElementById("binyanPronoun").selectedIndex = 0;
@@ -64,57 +64,73 @@ function checkAnswer() {
   const time = document.getElementById("binyanTime");
   const root = document.getElementById("root");
 
-  const correctNum = document.getElementById("correctNum");
-  const correctPronoun = document.getElementById("correctPronoun");
-  const correctTime = document.getElementById("correctTime");
-  const correctRoot = document.getElementById("correctRoot");
-
   let correct = true;
 
-  // ------------------ RESET HINTS ------------------
-  correctNum.innerText = "";
-  correctPronoun.innerText = "";
-  correctTime.innerText = "";
-  correctRoot.innerText = "";
+  // save user answers
+  q.user = {
+    num: num.value,
+    pronoun: pronoun.value,
+    time: time.value,
+    root: root.value
+  };
 
-  // ------------------ NUMBER ------------------
+  // ---------------- NUMBER ----------------
   if (Number(num.value) !== q.binyanNumber) {
     num.classList.add("wrong");
-    correctNum.innerText = `תשובה: ${q.binyanNumber}`;
     correct = false;
+
+    showCorrectAnswer(num, `נכון: ${q.binyanNumber}`);
   } else {
     num.classList.add("correct");
   }
 
-  // ------------------ PRONOUN ------------------
+  // ---------------- PRONOUN ----------------
   if (pronoun.value !== q.binyanPronoun) {
     pronoun.classList.add("wrong");
-    correctPronoun.innerText = `תשובה: ${q.binyanPronoun}`;
     correct = false;
+
+    showCorrectAnswer(pronoun, `נכון: ${q.binyanPronoun}`);
   } else {
     pronoun.classList.add("correct");
   }
 
-  // ------------------ TIME ------------------
+  // ---------------- TIME ----------------
   if (time.value !== q.binyanTime) {
     time.classList.add("wrong");
-    correctTime.innerText = `תשובה: ${q.binyanTime}`;
     correct = false;
+
+    showCorrectAnswer(time, `נכון: ${q.binyanTime}`);
   } else {
     time.classList.add("correct");
   }
 
-  // ------------------ ROOT ------------------
+  // ---------------- ROOT ----------------
   if (root.value !== q.binyanRoot) {
     root.classList.add("wrong");
-    correctRoot.innerText = `תשובה: ${q.binyanRoot}`;
     correct = false;
+
+    showCorrectAnswer(root, `נכון: ${q.binyanRoot}`);
   } else {
     root.classList.add("correct");
   }
 
   results[currentIndex] = correct;
+
   return correct;
+}
+function showCorrectAnswer(element, text) {
+
+  const old = element.parentElement.querySelector(".correct-answer");
+
+  if (old) old.remove();
+
+  const div = document.createElement("div");
+
+  div.className = "correct-answer";
+
+  div.innerText = text;
+
+  element.parentElement.appendChild(div);
 }
 
 // -----------------------------
